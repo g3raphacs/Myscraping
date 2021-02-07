@@ -1,12 +1,17 @@
 {
+    "name": "lejee/myscraping",
+    "authors": [
+        {
+            "name": "lejee",
+            "email": "mathieu4job@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
-            "controller\\": "controller",
-            "model\\": "model"
+            "App\\": "application/class"
         }
     },
     "require": {
-        "twig/twig": "^3.0"
+        
     }
-
 }
