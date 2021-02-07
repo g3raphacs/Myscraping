@@ -2,11 +2,7 @@
 
 require '../vendor/autoload.php';
 
-
-
 $router = new App\Router\Router($_GET['url']);
-
-var_dump($_GET['url']);
 
 $router->get('/', function(){
     echo 'home page';
