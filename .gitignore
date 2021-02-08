@@ -4,3 +4,5 @@
 # dependencies
 /vendor
 /application/cache
+/public/style
+/public/css/style.css.map

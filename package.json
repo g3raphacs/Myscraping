@@ -1,0 +1,9 @@
+{
+  "name": "scrapin",
+  "version": "1.0.0",
+  "description": "scrapin",
+  "main": "index.js",
+  "scripts": {
+    "sass": "sass --watch ./public/style/style.scss:./public/css/style.css"
+  }
+}
