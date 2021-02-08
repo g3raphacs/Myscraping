@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Twig;
 
 class Twig{
     private $template;

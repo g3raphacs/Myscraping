@@ -5,11 +5,15 @@ require '../vendor/autoload.php';
 $router = new App\Router\Router($_GET['url']);
 
 $router->get('/', function(){
-    echo 'home page';
+    echo 'hello world';
 });
 
 $router->get('/inscription', function(){
-    echo 'Inscription';
+    //render template
+    $twig = new App\Twig\Twig('inscription.html.twig');
+    $twig->render([
+   
+        ]);
 });
 
 $router->get('/connexion', function(){
