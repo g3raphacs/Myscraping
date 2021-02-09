@@ -5,7 +5,8 @@ require '../vendor/autoload.php';
 $router = new App\Router\Router($_GET['url']);
 
 $router->get('/', function(){
-    echo 'hello world';
+    $twig = new App\Twig\Twig('logo.html.twig');
+    $twig->render();
 });
 
 $router->get('/inscription', function(){
@@ -17,7 +18,11 @@ $router->get('/inscription', function(){
 });
 
 $router->get('/connexion', function(){
-    echo 'Connexion';
+
+    $twig = new App\Twig\Twig('connexion.html.twig');
+    $twig->render([
+   
+        ]);
 });
 
 $router->get('/:userslug', function($userslug){
@@ -28,8 +33,16 @@ $router->get('/:user/:scrap', function($user,$scrap){
     echo "nom du scrap : " . $scrap . ", pour l'utilisateur : ".$user;
 });
 
-$router->post('/ajax/:user/:scrap', function($user,$scrap){
-    echo "nom du scrap : " . $scrap . ", pour l'utilisateur : ".$user;
+
+//AJAX ROUTES
+$router->post('login', function(){
+    $userM = new \App\UserManager;
+    echo $userM->signin();
+});
+
+$router->post('signup', function(){
+    $userM = new \App\UserManager;
+    echo $userM->signup();
 });
 
 $router->run();

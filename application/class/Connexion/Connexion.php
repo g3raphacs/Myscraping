@@ -1,5 +1,5 @@
 <?php
-namespace App;
+namespace App\Connexion;
 
 class Connexion {
 	private $login;
@@ -42,10 +42,12 @@ class Connexion {
 		}
 
 		$stmt->execute();
-		return $stmt->fetchAll();
+		$reponse = $stmt->fetchAll();
 		$stmt->closeCursor();
 		$stmt=NULL;
+		return $reponse;
 	}
+	
 	public function qw($sql,Array $cond = null){
 		$stmt = $this->connec->prepare($sql);
 

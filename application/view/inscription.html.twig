@@ -1,1 +1,32 @@
-<div></div>
+{% extends "base.html.twig" %}
+
+{% block window %}
+    <div class="insc-container">
+        <div id="topbar"></div>
+        <div id="insc-window" class="bck-white-dark">
+            <div class="close-button"><a href="./connexion"></a></div>
+            <img src="public/medias/logocoul.svg" width="225px" height="60px" alt="scrapin logo">
+            <form action="">
+                <header>
+                    <h1 class="txt-sec f-it f-19 txt-center">Nouvel utilisateur</h1>
+                </header>
+                <label for="form-mail" class="f-14">Adresse e-mail</label>
+                <input class="f-13" type="email" name="mail" id="form-mail" placeholder="Entrez votre adresse e-mail">
+                <label for="form-username" class="f-14">Nom d'utilisateur</label>
+                <input class="f-13" type="text" name="username" id="form-username" placeholder="Entrez un nom d'utilisateur">
+                <label for="form-password" class="f-14">Mot de passe</label>
+                <input class="f-13" type="password" name="password" id="form-password" placeholder="Entrez un mot de passe">
+                <label for="form-password-conf" class="f-14">Confirmation</label>
+                <input class="f-13" type="password" name="passwordconf" id="form-password-conf" placeholder="Confirmez le mot de passe">
+                <p id="error-message" class="f-12 f-bold txt-error txt-center" style="display:none;">Attention! Message d'erreur!</p>
+                <div class="login-button"><img src="public/medias/tick.svg" width="35px" height="26px" alt="connect"></div>
+            </form>
+        </div>
+        <div id="footbar"></div>
+    </div>
+    
+{% endblock window %}
+
+{% block script %}
+    <script type="module" src="public/js/inscription.js"></script>
+{% endblock script %}
