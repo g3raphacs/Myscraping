@@ -12,6 +12,7 @@
         }
     },
     "require": {
-        "twig/twig": "^3.2"
+        "twig/twig": "^3.2",
+        "respect/validation": "^2.0"
     }
 }

@@ -11,8 +11,7 @@ loginButton.addEventListener('click', async ()=>{
 const checklogin = async ()=>{
     const Ajax =  new AjaxRequest();
     const response = await Ajax.ex(form , 'login')
-    console.log(response.status)
-    if(response.status == 'OK'){
+    if(response.status === 'OK'){
         login(response.user)
     }else{
         errorMessage(response.status)
@@ -20,8 +19,9 @@ const checklogin = async ()=>{
 }
 
 const login = (user)=>{
-    message.style.display = "none"
-    window.location = user
+    const popup = document.getElementById('insc-window')
+    popup.innerHTML = '<p class="f-14 f-bold" style="color:green;">Identité confirmée!</p>'
+    setTimeout(function(){ window.location = user }, 1000)
 }
 const errorMessage = (msg)=>{
     message.style.display = "block"

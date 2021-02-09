@@ -4,8 +4,8 @@ namespace App\Tools;
 
 class Hash {
 
-    public static $encryption_key = "a4g8r5hhmolj8r1ji";
-    public static $cipher ="aes-128-cbc";
+    public static $encryption_key = "j41ruldoanm6e4gm9";
+    public static $cipher ="AES-128-CBC";
 
     public static function encrypt($string){
 

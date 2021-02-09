@@ -11,17 +11,17 @@ loginButton.addEventListener('click', async ()=>{
 const signUp = async ()=>{
     const Ajax =  new AjaxRequest();
     const response = await Ajax.ex(form , 'signup')
-    console.log(response.status)
     if(response.status == 'OK'){
-        login(response.user)
+        confirmInscription()
     }else{
         errorMessage(response.status)
     }
 }
 
-const login = (user)=>{
-    message.style.display = "none"
-    window.location = user
+const confirmInscription = ()=>{
+    const popup = document.getElementById('insc-window')
+    popup.innerHTML = '<p class="f-14 f-bold" style="color:green;">Inscription confirmée! Vous pouvez maintenant vous connecter!</p>'
+    setTimeout(function(){ window.location = './' }, 1000)
 }
 const errorMessage = (msg)=>{
     message.style.display = "block"

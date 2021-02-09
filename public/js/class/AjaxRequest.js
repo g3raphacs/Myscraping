@@ -10,15 +10,15 @@ class AjaxRequest {
         return new Promise((resolve , reject)=>{
             xhr.open('POST', phproute, true);
             xhr.send(data);
-                xhr.onreadystatechange = () => {
-                    if (xhr.readyState == 4 && xhr.status == 200) {
-                        if(responseFormat==='Twig'){
-                            resolve(xhr.responseText) 
-                        }else{
-                            resolve(xhr.response)
-                        }
+            xhr.onreadystatechange = () => {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    if(responseFormat==='Twig'){
+                        resolve(xhr.responseText) 
+                    }else{
+                        resolve(xhr.response)
                     }
                 }
+            }
         })
     }
 
