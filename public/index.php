@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require '../vendor/autoload.php';
 
@@ -7,42 +8,52 @@ $router = new App\Router\Router($_GET['url']);
 $router->get('/', function(){
     $twig = new App\Twig\Twig('logo.html.twig');
     $twig->render();
+
+    $session = new \App\Session\SessionManager;
+    if($session->checkSession()){
+        header('Location: ./'.$_SESSION['scraplist']);
+    }
 });
 
 $router->get('/inscription', function(){
-    //render template
+    $session = new \App\Session\SessionManager;
+    $session->killSession();
+
     $twig = new App\Twig\Twig('inscription.html.twig');
-    $twig->render([
-   
-        ]);
+    $twig->render();
+
 });
 
 $router->get('/connexion', function(){
+    $session = new \App\Session\SessionManager;
+    $session->killSession();
 
     $twig = new App\Twig\Twig('connexion.html.twig');
-    $twig->render([
-   
-        ]);
+    $twig->render();
+
 });
 
 $router->get('/:userslug', function($userslug){
+    
+    $session = new \App\Session\SessionManager;
+    if(!$session->checkSession()){
+        $session->killSession();
+        header('Location: ./');
+    }
     echo "page de l'utilisateur : " . $userslug;
 });
 
-$router->get('/:user/:scrap', function($user,$scrap){
-    echo "nom du scrap : " . $scrap . ", pour l'utilisateur : ".$user;
-});
 
 
 //AJAX ROUTES
 $router->post('login', function(){
-    $userM = new \App\UserManager;
-    echo $userM->signin();
+    $userM = new \App\User\UserManager;
+    $userM->signin();
 });
 
 $router->post('signup', function(){
-    $userM = new \App\UserManager;
-    echo $userM->signup();
+    $userM = new \App\User\UserManager;
+    $userM->signup();
 });
 
 $router->run();

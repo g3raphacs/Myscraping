@@ -1,7 +1,8 @@
 <?php
 
-namespace App;
+namespace App\User;
 use App\Connexion\Connexion;
+use App\Session\SessionManager;
 use Respect\Validation\Validator as v;
 
 
@@ -14,7 +15,7 @@ class UserManager {
 
             $req = $base->q(
                 "SELECT
-                            u.password
+                            u.password , u.scraplist
                             FROM user as u
                             WHERE u.username = :username",
                 array(
@@ -24,29 +25,31 @@ class UserManager {
 
             if(isset($req[0]->password)){
                 $registeredPassword = $req[0]->password;
+                $scraplist = $req[0]->scraplist;
                 if(password_verify($_POST['password'], $registeredPassword)) {
-                    $this->openSession(); 
+                    $this->openSession($_POST['username'] , $scraplist); 
                 }else{
                     $this->resp('Utilisateur ou mot de passe invalide');
                 }
             }else{
                 $this->resp('Utilisateur ou mot de passe invalide');
             }
-            
-
         }else{
             $this->resp('Oups! un problème est survenu...');
         }
     }
 
-    private function openSession(){
-        $this->resp('OK' , $_POST['username']);
+    private function openSession($username , $scraplistID){
+        $session = new SessionManager;
+        $session->openSession($username , $scraplistID);
+        $this->resp('OK' , $_POST['username'], $scraplistID);
     }
 
-    private function resp($status , $user = null){
+    private function resp($status , $user = null , $scraplist = null){
         echo json_encode(array(
             'status' => $status,
-            'user' => $user
+            'user' => $user,
+            'scraplist' => $scraplist
         ));
     }
 
@@ -55,16 +58,19 @@ class UserManager {
         $validation = $this->signupValidation();
         if($validation === "OK"){
             $hashedPass = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $scraplistID = $_POST['username'].bin2hex(random_bytes(5));
             $base = new Connexion;
 
-            $base->qw('INSERT INTO user(`mail`, `username`, `password`)
-                      VALUES (:mail, :username, :pass)',
+            $base->qw('INSERT INTO user(`mail`, `username`, `password`, `scraplist`)
+                      VALUES (:mail, :username, :pass, :scraplist)',
             array(
                 array('mail',$_POST['mail'],\PDO::PARAM_STR),
                 array('username',$_POST['username'],\PDO::PARAM_STR),
-                array('pass',$hashedPass,\PDO::PARAM_STR)
+                array('pass',$hashedPass,\PDO::PARAM_STR),
+                array('scraplist',$scraplistID,\PDO::PARAM_STR)
                 )
             );
+            $this->openSession($_POST['username'] , $scraplistID); 
             $this->resp('OK');
 
         }else{

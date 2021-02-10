@@ -12,16 +12,16 @@ const checklogin = async ()=>{
     const Ajax =  new AjaxRequest();
     const response = await Ajax.ex(form , 'login')
     if(response.status === 'OK'){
-        login(response.user)
+        login(response.scraplist)
     }else{
         errorMessage(response.status)
     }
 }
 
-const login = (user)=>{
+const login = (scraplist)=>{
     const popup = document.getElementById('insc-window')
     popup.innerHTML = '<p class="f-14 f-bold" style="color:green;">Identité confirmée!</p>'
-    setTimeout(function(){ window.location = user }, 1000)
+    setTimeout(function(){ window.location = scraplist }, 1000)
 }
 const errorMessage = (msg)=>{
     message.style.display = "block"
