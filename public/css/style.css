@@ -1,3 +1,11 @@
+.font-main {
+  font-family: "Open Sans", sans-serif;
+}
+
+.font-sec {
+  font-family: "Roboto", sans-serif;
+}
+
 .f-13 {
   font-size: 0.8125rem;
 }
@@ -26,6 +34,10 @@
   font-size: 1.1875rem;
 }
 
+.f-20 {
+  font-size: 1.25rem;
+}
+
 .f-22 {
   font-size: 1.375rem;
 }
@@ -44,6 +56,10 @@
 
 .f-regular {
   font-weight: 400;
+}
+
+.f-sbold {
+  font-weight: 600;
 }
 
 .f-bold {
@@ -280,13 +296,15 @@ body {
   background-color: #fe5f55;
 }
 
-#topbar {
+#navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   min-height: 60px;
+  position: fixed;
+  width: 100%;
 }
-#topbar #header-right {
+#navbar #header-right {
   padding: 0 25px;
   display: flex;
 }
@@ -320,8 +338,8 @@ body {
 }
 .btn-topbar:hover {
   cursor: pointer;
-  border: 1px solid #fe5f55;
   color: #fe5f55;
+  background-color: white;
 }
 .btn-topbar:hover #logout-icn {
   background-image: url(../medias/logout-hover.svg);
@@ -335,6 +353,187 @@ body {
 
 #user-btn {
   margin-right: 8px;
+}
+
+#main-container {
+  padding-top: 60px;
+  display: flex;
+  height: 100%;
+}
+
+#scraplist-container {
+  padding: 12px;
+  min-width: 400px;
+  height: 100%;
+}
+
+#scraplist-icn {
+  margin-right: 20px;
+}
+
+#scraplist-title {
+  padding-top: 5px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#scraplist-add-btn {
+  border: 1px solid #fe5f55;
+  padding: 6px 10px;
+  border-radius: 6px;
+  line-height: 1.7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#scraplist-add-btn .plus-icn {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+  background-image: url(../medias/plus.svg);
+}
+#scraplist-add-btn p {
+  color: #fe5f55;
+}
+#scraplist-add-btn:hover {
+  cursor: pointer;
+  background-color: #fe5f55;
+}
+#scraplist-add-btn:hover p {
+  color: white;
+}
+#scraplist-add-btn:hover .plus-icn {
+  background-image: url(../medias/plus-hover.svg);
+}
+
+.scrapitem {
+  color: #495867;
+  position: relative;
+  padding: 10px 10px;
+  margin-top: 12px;
+  border-radius: 10px;
+  border: 1px solid #f7f7ff;
+}
+.scrapitem .scrapitem-details {
+  display: none;
+}
+.scrapitem .scrap-title {
+  margin: 0px;
+}
+.scrapitem:hover:not(.selected) {
+  cursor: pointer;
+  border: 1px solid #495867;
+}
+.scrapitem.selected {
+  padding: 10px 10px 20px 10px;
+  color: #ffffff;
+  background-color: #495867;
+}
+.scrapitem.selected .scrapitem-details {
+  display: block;
+}
+.scrapitem.selected .scrap-title {
+  margin-top: 0px;
+  margin-bottom: 5px;
+}
+
+.scrap-number {
+  margin: 0px;
+  position: absolute;
+  top: 10px;
+  left: 12px;
+}
+
+.scrap-url {
+  margin-top: 5px;
+}
+.scrap-url a {
+  color: #bdd5ea;
+}
+.scrap-url a:hover {
+  color: #fe5f55;
+}
+
+.scrapitem-options {
+  display: flex;
+  justify-content: center;
+}
+
+.option-btn {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0px 3px;
+}
+.option-btn .option-label {
+  display: none;
+  color: white;
+  font-size: 0.7rem;
+  font-style: italic;
+  margin: 0;
+  width: 150px;
+  text-align: center;
+  position: absolute;
+  left: -56px;
+  top: 38px;
+}
+.option-btn:hover {
+  cursor: pointer;
+}
+.option-btn:hover .option-label {
+  display: block;
+}
+
+.option-collect {
+  background-image: url(../medias/sc-download.svg);
+}
+.option-collect:hover:not(.selected) {
+  background-image: url(../medias/sc-download-hover.svg);
+}
+.option-collect.selected {
+  background-image: url(../medias/sc-download-selected.svg);
+}
+
+.option-see {
+  background-image: url(../medias/sc-view.svg);
+}
+.option-see:hover:not(.selected) {
+  background-image: url(../medias/sc-view-hover.svg);
+}
+.option-see.selected {
+  background-image: url(../medias/sc-view-selected.svg);
+}
+
+.option-edit {
+  background-image: url(../medias/sc-edit.svg);
+}
+.option-edit:hover:not(.selected) {
+  background-image: url(../medias/sc-edit-hover.svg);
+}
+.option-edit.selected {
+  background-image: url(../medias/sc-edit-selected.svg);
+}
+
+.option-save {
+  background-image: url(../medias/sc-save.svg);
+}
+.option-save:hover:not(.selected) {
+  background-image: url(../medias/sc-save-hover.svg);
+}
+.option-save.selected {
+  background-image: url(../medias/sc-save-selected.svg);
+}
+
+.option-delete {
+  background-image: url(../medias/sc-delete.svg);
+}
+.option-delete:hover:not(.selected) {
+  background-image: url(../medias/sc-delete-hover.svg);
+}
+.option-delete.selected {
+  background-image: url(../medias/sc-delete-selected.svg);
 }
 
 /*# sourceMappingURL=style.css.map */

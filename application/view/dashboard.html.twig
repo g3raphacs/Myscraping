@@ -1,11 +1,29 @@
 {% extends "base.html.twig" %}
 
 {% block header %}
-    {% include "/header.html.twig" %}
+    {% include "/parts/header.html.twig" %}
 {% endblock %}
 
 {% block window %}
-    <p>THIS IS A DASHBOARD</p>
+<div id="main-container">
+    <section id="scraplist-container" class="bck-white-dark">
+    <header id="scraplist-title">
+        <img id="scraplist-icn" src="public/medias/scraps.svg" width="35px" height="35px   " alt="scrapin logo">
+        <p class="f-20 txt-main f-bold font-sec">Mes collectes</p>
+    </header>
+    <div id="scraplist-add-btn">
+        <div class="plus-icn"></div>
+        <p class="mp0 f-sbold">Nouvelle collecte</p>
+    </div>
+    {% block scraplist %}
+        {% include "/parts/scraplist.html.twig" %}
+    {% endblock %}
+    </sectiion>
+    
+    {% block subwindow %}
+        
+    {% endblock %}
+</div>
     
 {% endblock window %}
 

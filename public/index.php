@@ -47,7 +47,9 @@ $router->get('/:userslug', function($userslug){
     }
 
     $twig = new Twig('dashboard.html.twig');
-    $twig->render();
+    $twig->render([
+        'username' => $_SESSION['username']
+    ]);
 });
 
 

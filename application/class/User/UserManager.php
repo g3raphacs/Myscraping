@@ -70,8 +70,7 @@ class UserManager {
                 array('scraplist',$scraplistID,\PDO::PARAM_STR)
                 )
             );
-            $this->openSession($_POST['username'] , $scraplistID); 
-            $this->resp('OK');
+            $this->openSession($_POST['username'] , $scraplistID);
 
         }else{
             $this->resp($validation);
