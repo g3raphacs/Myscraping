@@ -184,6 +184,15 @@ button {
   background: none;
 }
 
+.m0 {
+  margin: 0;
+}
+
+.mp0 {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: linear-gradient(300deg, #1e7399, #5773bd);
   color: #2a3b49;
@@ -269,6 +278,63 @@ body {
 .login-button:hover {
   cursor: pointer;
   background-color: #fe5f55;
+}
+
+#topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 60px;
+}
+#topbar #header-right {
+  padding: 0 25px;
+  display: flex;
+}
+
+.btn-topbar {
+  border: 1px solid white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  line-height: 1.7;
+  display: flex;
+}
+.btn-topbar a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.btn-topbar #param-icn {
+  width: 25px;
+  height: 25px;
+  background-image: url(../medias/param.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 10px;
+}
+.btn-topbar #logout-icn {
+  width: 25px;
+  height: 25px;
+  background-image: url(../medias/logout.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.btn-topbar:hover {
+  cursor: pointer;
+  border: 1px solid #fe5f55;
+  color: #fe5f55;
+}
+.btn-topbar:hover #logout-icn {
+  background-image: url(../medias/logout-hover.svg);
+}
+.btn-topbar:hover #param-icn {
+  background-image: url(../medias/param-hover.svg);
+}
+.btn-topbar:hover p {
+  color: #fe5f55;
+}
+
+#user-btn {
+  margin-right: 8px;
 }
 
 /*# sourceMappingURL=style.css.map */
