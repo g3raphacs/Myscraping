@@ -363,8 +363,14 @@ body {
 
 #scraplist-container {
   padding: 12px;
-  min-width: 400px;
-  height: 100%;
+  width: 100%;
+  max-width: 400px;
+  max-height: 100%;
+}
+
+#scrapitems-container {
+  max-height: 78%;
+  overflow-y: scroll;
 }
 
 #scraplist-icn {

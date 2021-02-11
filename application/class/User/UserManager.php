@@ -6,7 +6,7 @@ use App\Session\SessionManager;
 use Respect\Validation\Validator as v;
 
 
-class UserManager {
+class UserManager{
 
     public function signin(){
         if ($this->checkUsername($_POST['username']) && $this->checkPassword($_POST['password']) ){

@@ -7,17 +7,19 @@
 {% block window %}
 <div id="main-container">
     <section id="scraplist-container" class="bck-white-dark">
-    <header id="scraplist-title">
-        <img id="scraplist-icn" src="public/medias/scraps.svg" width="35px" height="35px   " alt="scrapin logo">
-        <p class="f-20 txt-main f-bold font-sec">Mes collectes</p>
-    </header>
-    <div id="scraplist-add-btn">
-        <div class="plus-icn"></div>
-        <p class="mp0 f-sbold">Nouvelle collecte</p>
-    </div>
-    {% block scraplist %}
-        {% include "/parts/scraplist.html.twig" %}
-    {% endblock %}
+        <header id="scraplist-title">
+            <img id="scraplist-icn" src="public/medias/scraps.svg" width="35px" height="35px   " alt="scrapin logo">
+            <p class="f-20 txt-main f-bold font-sec">Mes collectes</p>
+        </header>
+        <div id="scraplist-add-btn" onclick="newScrap()">
+            <div class="plus-icn"></div>
+            <p class="mp0 f-sbold">Nouvelle collecte</p>
+        </div>
+        <div id="scrapitems-container">
+        {% block scraplist %}
+            {% include "/parts/scraplist.html.twig" %}
+        {% endblock %}
+        </div>
     </sectiion>
     
     {% block subwindow %}
@@ -28,5 +30,5 @@
 {% endblock window %}
 
 {% block script %}
-    
+    <script src="public/js/dashboard.js"></script>
 {% endblock script %}

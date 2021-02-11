@@ -1,45 +1,13 @@
-<div id="scrapitems-container">
-    <div class="scrapitem selected f-sbold">
-        <p class="scrap-number">1 .</p>
-        <p class="scrap-title txt-center">Nom de la collecte</p>
-        <div class="scrapitem-details">
-            <p class="scrap-url txt-center txt-main-lighter f-it f-13"><a target="_blank" href="https://www.nomdusite.com">https://www.nomdusite.com</a></p>
-            <div class="scrapitem-options">
-                <div class="option-btn option-collect"><p class="option-label">Lancer</p></div>
-                <div class="option-btn option-see selected"><p class="option-label">Voir</p></div>
-                <div class="option-btn option-edit"><p class="option-label">Modifier</p></div>
-                <div class="option-btn option-save"><p class="option-label">Enregistrer</p></div>
-                <div class="option-btn option-delete"><p class="option-label">Supprimer</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="scrapitem txt-white f-sbold">
-        <p class="scrap-number">2 .</p>
-        <p class="scrap-title txt-center">Nom de la collecte</p>
-        <div class="scrapitem-details">
-            <p class="scrap-url txt-center txt-main-lighter f-it f-13"><a target="_blank" href="https://www.nomdusite.com">https://www.nomdusite.com</a></p>
-            <div class="scrapitem-options">
-                <div class="option-btn option-collect"><p class="option-label">Lancer</p></div>
-                <div class="option-btn option-see selected"><p class="option-label">Voir</p></div>
-                <div class="option-btn option-edit"><p class="option-label">Modifier</p></div>
-                <div class="option-btn option-save"><p class="option-label">Enregistrer</p></div>
-                <div class="option-btn option-delete"><p class="option-label">Supprimer</p></div>
-            </div>
-        </div>
-    </div>
-    <div class="scrapitem txt-white f-sbold">
-        <p class="scrap-number">3 .</p>
-        <p class="scrap-title txt-center">Nom de la collecte</p>
-        <div class="scrapitem-details">
-            <p class="scrap-url txt-center txt-main-lighter f-it f-13"><a target="_blank" href="https://www.nomdusite.com">https://www.nomdusite.com</a></p>
-            <div class="scrapitem-options">
-                <div class="option-btn option-collect"><p class="option-label">Lancer</p></div>
-                <div class="option-btn option-see selected"><p class="option-label">Voir</p></div>
-                <div class="option-btn option-edit"><p class="option-label">Modifier</p></div>
-                <div class="option-btn option-save"><p class="option-label">Enregistrer</p></div>
-                <div class="option-btn option-delete"><p class="option-label">Supprimer</p></div>
-            </div>
-        </div>
-    </div>
 
-</div>
+{% for scrap in scraps %}
+        <div class="scrapitem f-sbold" onclick="opSelect(this,{{ scrap.ID }})">
+        <p class="scrap-number">{{ loop.index }} .</p>
+        <p class="scrap-title txt-center">{{ scrap.name }}</p>
+        <div class="scrapitem-details">
+            <p class="scrap-url txt-center txt-main-lighter f-it f-13"><a target="_blank" href="{{ scrap.url }}">{{ scrap.url }}</a></p>
+            <div class="scrapitem-options">
+                
+            </div>
+        </div>
+    </div>
+{% endfor %}
