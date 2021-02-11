@@ -167,4 +167,25 @@ class UserManager {
         }
         return false;
     }
+
+    public static function initUser($id){
+        
+        $base = new Connexion;
+
+            $req = $base->q(
+                "SELECT
+                            *
+                            FROM user as u
+                            WHERE u.scraplist = :id",
+                array(
+                    array('id',$id,\PDO::PARAM_STR)
+                    )
+            );
+
+            if(isset($req[0]->username)){
+                return $req[0];
+            }else{
+                return 'user not found';
+            }
+    }
 }

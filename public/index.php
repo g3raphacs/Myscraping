@@ -5,6 +5,8 @@ require '../vendor/autoload.php';
 use App\Router\Router;
 use App\Twig\Twig;
 use App\Session\SessionManager;
+use App\User\User;
+use App\User\UserManager;
 
 $router = new Router($_GET['url']);
 
@@ -45,10 +47,11 @@ $router->get('/:userslug', function($userslug){
         $session->killSession();
         header('Location: ./');
     }
+    $user = new User($_SESSION['scraplist']);
 
     $twig = new Twig('dashboard.html.twig');
     $twig->render([
-        'username' => $_SESSION['username']
+        'username' => $user->get_username()
     ]);
 });
 
