@@ -34,4 +34,13 @@ class ScrapManager {
             )
         );
     }
+    public static function delete($id){
+        $base = new Connexion;
+
+        $base->qw('DELETE FROM scrap WHERE ID = :ID',
+        array(
+            array('ID',$id,\PDO::PARAM_STR)
+            )
+        );
+    }
 }

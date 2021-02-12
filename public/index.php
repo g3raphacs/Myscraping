@@ -59,13 +59,11 @@ $router->get('/:userslug', function($userslug){
 //AJAX ROUTES
 //login
 $router->post('login', function(){
-    checkSession();
     $userM = new \App\User\UserManager;
     $userM->signin();
 });
 //signup
 $router->post('signup', function(){
-    checkSession();
     $userM = new \App\User\UserManager;
     $userM->signup();
 });
@@ -73,6 +71,11 @@ $router->post('signup', function(){
 $router->post('newScrap', function(){
     checkSession();
     ScrapManager::newScrap($_SESSION['scraplist']);
+});
+//new scrap
+$router->post('delScrap', function(){
+    checkSession();
+    ScrapManager::delete($_POST['ID']);
 });
 //twig - Options
 $router->post('twigOptions', function(){
@@ -83,8 +86,38 @@ $router->post('twigOptions', function(){
 $router->post('scraplist', function(){
     checkSession();
     $scraps = (array) ScrapManager::findScraps($_SESSION['scraplist']);
-
+    
     $view = new View('parts/scraplist.html.twig' , ['scraps' => $scraps]);
+});
+//Window - delete
+$router->post('window-del', function(){
+    checkSession();
+    $view = new View('parts/deletewindow.html.twig' , ['ID' => $_POST['ID']]);
+});
+//Window - edit
+$router->post('window-edit', function(){
+    checkSession();
+    $view = new View('parts/editwindow.html.twig' , ['ID' => $_POST['ID']]);
+});
+//Window - save
+$router->post('window-save', function(){
+    checkSession();
+    $view = new View('parts/exportwindow.html.twig' , ['ID' => $_POST['ID']]);
+});
+//Window - collect
+$router->post('window-collect', function(){
+    checkSession();
+    $view = new View('parts/launchwindow.html.twig' , ['ID' => $_POST['ID']]);
+});
+//Window - see
+$router->post('seeScrap', function(){
+    checkSession();
+    $view = new View('parts/viewwindow.html.twig' , ['ID' => $_POST['ID']]);
+});
+//Window - logo
+$router->post('logo', function(){
+    checkSession();
+    $view = new View('parts/logo.html.twig');
 });
 
 $router->run();

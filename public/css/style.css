@@ -421,6 +421,7 @@ body {
   margin-top: 12px;
   border-radius: 10px;
   border: 1px solid #f7f7ff;
+  transition: ease-in-out 300ms;
 }
 .scrapitem .scrapitem-details {
   display: none;
@@ -492,54 +493,103 @@ body {
   display: block;
 }
 
-.option-collect {
+#option-collect {
   background-image: url(../medias/sc-download.svg);
 }
-.option-collect:hover:not(.selected) {
+#option-collect:hover:not(.selected) {
   background-image: url(../medias/sc-download-hover.svg);
 }
-.option-collect.selected {
+#option-collect.selected {
   background-image: url(../medias/sc-download-selected.svg);
 }
 
-.option-see {
+#option-see {
   background-image: url(../medias/sc-view.svg);
 }
-.option-see:hover:not(.selected) {
+#option-see:hover:not(.selected) {
   background-image: url(../medias/sc-view-hover.svg);
 }
-.option-see.selected {
+#option-see.selected {
   background-image: url(../medias/sc-view-selected.svg);
 }
 
-.option-edit {
+#option-edit {
   background-image: url(../medias/sc-edit.svg);
 }
-.option-edit:hover:not(.selected) {
+#option-edit:hover:not(.selected) {
   background-image: url(../medias/sc-edit-hover.svg);
 }
-.option-edit.selected {
+#option-edit.selected {
   background-image: url(../medias/sc-edit-selected.svg);
 }
 
-.option-save {
+#option-save {
   background-image: url(../medias/sc-save.svg);
 }
-.option-save:hover:not(.selected) {
+#option-save:hover:not(.selected) {
   background-image: url(../medias/sc-save-hover.svg);
 }
-.option-save.selected {
+#option-save.selected {
   background-image: url(../medias/sc-save-selected.svg);
 }
 
-.option-delete {
+#option-delete {
   background-image: url(../medias/sc-delete.svg);
 }
-.option-delete:hover:not(.selected) {
+#option-delete:hover:not(.selected) {
   background-image: url(../medias/sc-delete-hover.svg);
 }
-.option-delete.selected {
+#option-delete.selected {
   background-image: url(../medias/sc-delete-selected.svg);
+}
+
+#right-window {
+  width: 100%;
+}
+
+#right-logo-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#insc-window .btn_flex {
+  display: flex;
+  justify-content: center;
+}
+
+.message-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.confirm-btn {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: white;
+  border-radius: 10px;
+  padding: 6px 3px;
+  max-width: 60px;
+  margin: 0 6px;
+}
+.confirm-btn.yes-button {
+  background-color: #fe5f55;
+}
+.confirm-btn.yes-button:hover {
+  cursor: pointer;
+  background-color: red;
+}
+.confirm-btn.no-button {
+  background-color: #495867;
+}
+.confirm-btn.no-button:hover {
+  cursor: pointer;
+  background-color: #2a3b49;
 }
 
 /*# sourceMappingURL=style.css.map */

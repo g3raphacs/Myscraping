@@ -10,29 +10,57 @@ function opSelect(item , id){
         }
         scrapitem.classList.add('selected')
         
-        renderView('twigOptions' , {'ID': id})
+        ajax('twigOptions' ,{'ID': id} , (xhr)=>{
+            twigContainer.innerHTML = xhr.responseText
+        })
     }
 }
 
 function newScrap(){
-    twigContainer = document.getElementById('scrapitems-container')
-    simpleAjax('newScrap' , 'scraplist')
+    
+    ajax('newScrap' , null , (xhr)=>{
+        ajax('scraplist' , null , (xhr)=>{
+            twigContainer = document.getElementById('scrapitems-container')
+            twigContainer.innerHTML = xhr.responseText
+        })
+    })
 }
 
 function opCollect(item , id){
     selectOption(item)
+    
+    ajax('window-collect' ,{'ID': id} , (xhr)=>{
+        twigContainer = document.getElementById('right-window')
+        twigContainer.innerHTML = xhr.responseText
+    })
 }
 function opSee(item , id){
     selectOption(item)
+    see(id)
 }
 function opEdit(item , id){
     selectOption(item)
+    
+    ajax('window-edit' ,{'ID': id} , (xhr)=>{
+        twigContainer = document.getElementById('right-window')
+        twigContainer.innerHTML = xhr.responseText
+    })
 }
 function opSave(item , id){
     selectOption(item)
+
+    ajax('window-save' ,{'ID': id} , (xhr)=>{
+        twigContainer = document.getElementById('right-window')
+        twigContainer.innerHTML = xhr.responseText
+    })
 }
 function opDelete(item , id){
     selectOption(item)
+
+    ajax('window-del' ,{'ID': id} , (xhr)=>{
+        twigContainer = document.getElementById('right-window')
+        twigContainer.innerHTML = xhr.responseText
+    })
 }
 
 function selectOption(item){
@@ -50,8 +78,29 @@ function unselectOptions(){
     }
 }
 
-function renderView (route , data = null){
-    twigContainer.innerHTML=''
+function see(id){
+    unselectOptions()
+    const optionBtn = document.getElementById('option-see');
+    optionBtn.classList.add('selected')
+    ajax('seeScrap' ,{'ID': id} , (xhr)=>{
+        twigContainer = document.getElementById('right-window')
+        twigContainer.innerHTML = xhr.responseText
+    })
+}
+function delScrap(id){
+    ajax('delScrap' ,{'ID': id} , (xhr)=>{
+        ajax('scraplist' , null , (xhr)=>{
+            twigContainer = document.getElementById('scrapitems-container')
+            twigContainer.innerHTML = xhr.responseText
+            ajax('logo' ,null , (xhr)=>{
+                twigContainer = document.getElementById('right-window')
+                twigContainer.innerHTML = xhr.responseText
+            })
+        })
+    })
+}
+
+function ajax (route , data = null , callback = null){
     const formdata = new FormData();
     if(data){
         for (const [key, value] of Object.entries(data)) {
@@ -66,21 +115,10 @@ function renderView (route , data = null){
     xhr.send(formdata);
     xhr.onreadystatechange = () => {
         if (xhr.readyState == 4 && xhr.status == 200) {
-            twigContainer.innerHTML = xhr.responseText
-        }
-    }
-}
-function simpleAjax (route , view = null , data = null){
-    const xhr = new XMLHttpRequest();
-    const phproute = route;
-
-    xhr.open('POST', phproute, true);
-    xhr.send();
-    if(view !== null){
-        xhr.onreadystatechange = () => {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                renderView(view , data)
+            if(callback !== null){
+                callback(xhr)
             }
         }
     }
 }
+
