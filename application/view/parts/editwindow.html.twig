@@ -1,1 +1,51 @@
-<h1>Edit window</h1>
+<div id="updown-container">
+            <div id="right-split-container">
+                <div class="left-col">
+                    <div id="params">
+                        <label for="colparam-name">Nom de la collecte</label>
+                        <input id="colparam-name" type="text" placeholder="Entrez un nom">
+                        <label for="colparam-url">Nom de la collecte</label>
+                        <input id="colparam-url" type="text" placeholder="Entrez l'URL à collecter">
+                        <label for="colparam-frequence">Fréquence de la collecte</label>
+                        <select id="colparam-frequence">
+                            <option value="jour">Tous les jours</option>
+                            <option value="semaine">Toutes les semaines</option>
+                            <option value="mois">Tous les mois</option>
+                        </select>
+                        <label for="colparam-donnees">Type de données</label>
+                        <select id="colparam-donnees">
+                            <option value="jour">Jeu de données</option>
+                            <option value="semaine">Donnée unique</option>
+                        </select>
+                    </div>
+                    <div id="new-element-btn">
+                        <div id="new-element-icon"></div>
+                        <p>Ajoutez un element à cibler</p>
+                    </div>
+                </div>
+                <div class="right-col">
+                    <div class="element-box bck-white">
+                        <div class="element-delete-btn"></div>
+                        <div class="element-title-box">
+                            <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
+                            <h2 class="element-title">Element 1</h2>
+                        </div>
+                        <label for="element-name-id">Nom de l'élement</label>
+                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
+                        <label for="element-format-id">Format de l'element</label>
+                        <select id="element-format-id">
+                            <option value="text">Texte</option>
+                            <option value="number">Nombre</option>
+                            <option value="price">Prix</option>
+                            <option value="date">Date</option>
+                            <option value="picture">Image</option>
+                        </select>
+                        <label for="element-name-id">Sélecteur Element Parent</label>
+                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
+                        <label for="element-name-id">Sélecteur Element</label>
+                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
+                    </div>
+                </div>
+
+            </div>
+        </div>
