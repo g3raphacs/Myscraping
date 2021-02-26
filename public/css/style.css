@@ -336,6 +336,7 @@ body {
 #validation-btn:hover {
   cursor: pointer;
   background-color: #fe5f55;
+  color: white;
 }
 
 #navbar {
@@ -761,6 +762,90 @@ body {
   flex-direction: column;
   justify-content: space-between;
   height: 100%;
+}
+
+#scrap-view-window {
+  position: relative;
+  border-radius: 12px;
+  padding: 16px;
+  color: #495867;
+  background-color: white;
+  margin: 20px;
+}
+#scrap-view-window #scrap-view-icn {
+  margin-right: 12px;
+}
+#scrap-view-window #scrap-view-title-box {
+  display: flex;
+}
+#scrap-view-window #scrap-view-title-box h2 {
+  margin: 0;
+}
+#scrap-view-window #scrap-view-title-box p {
+  font-weight: 600;
+  font-style: italic;
+  margin-top: 2px;
+  color: #577399;
+}
+#scrap-view-window .view-datebox {
+  position: relative;
+  border-top: 1px solid #bdd5ea;
+  padding: 12px 10px;
+}
+#scrap-view-window .view-datebox .datebox-line-content {
+  display: none;
+}
+#scrap-view-window .view-datebox.selected .view-datebox-date {
+  color: #fe5f55;
+}
+#scrap-view-window .view-datebox.selected .view-datebox-arrow {
+  display: none;
+}
+#scrap-view-window .view-datebox.selected .datebox-line-content {
+  display: block;
+}
+#scrap-view-window .view-datebox .datebox-delete-btn {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../medias/trash.svg);
+  background-repeat: no-repeat;
+  object-fit: cover;
+}
+#scrap-view-window .view-datebox .datebox-delete-btn:hover {
+  cursor: pointer;
+  background-image: url(../medias/trashhover.svg);
+}
+#scrap-view-window .view-datebox:hover .datebox-delete-btn {
+  display: block;
+}
+#scrap-view-window .view-datebox .view-datebox-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 200px;
+}
+#scrap-view-window .view-datebox p {
+  margin: 0;
+}
+#scrap-view-window .view-datebox .view-datebox-date {
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+#scrap-view-window .view-datebox:hover {
+  cursor: pointer;
+  background-color: #bdd5ea;
+}
+#scrap-view-window .view-datebox .view-datebox-arrow {
+  width: 16px;
+  height: 16px;
+  background-image: url(../medias/arrow-down.svg);
+  background-position: cover;
+  background-position-y: 2px;
+  background-repeat: no-repeat;
 }
 
 /*# sourceMappingURL=style.css.map */
