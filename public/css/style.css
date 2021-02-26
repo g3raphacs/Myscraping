@@ -320,6 +320,24 @@ body {
   background-color: #fe5f55;
 }
 
+#validation-btn {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  margin: auto;
+  background-color: #ffffff;
+  max-width: 45px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  min-width: 100px;
+}
+#validation-btn:hover {
+  cursor: pointer;
+  background-color: #fe5f55;
+}
+
 #navbar {
   display: flex;
   justify-content: space-between;
@@ -569,7 +587,6 @@ body {
 
 #right-window {
   width: 100%;
-  padding: 12px;
 }
 
 #right-logo-container {
@@ -622,7 +639,7 @@ body {
 }
 #right-split-container > * {
   width: 50%;
-  padding: 10px 20px;
+  padding: 20px 20px;
 }
 #right-split-container label {
   font-family: "Open Sans", sans-serif;
@@ -737,6 +754,13 @@ body {
 .element-delete-btn:hover {
   cursor: pointer;
   background-image: url(../medias/trashhover.svg);
+}
+
+#updown-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 }
 
 /*# sourceMappingURL=style.css.map */
