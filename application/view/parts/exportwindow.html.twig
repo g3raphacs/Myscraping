@@ -1,1 +1,26 @@
-<h1>Export Window</h1>
+<div class="message-container">
+    <div id="insc-window" class="bck-white-dark">
+            <header class="title-export">
+                <div id="export-icn"></div>
+                <div>
+                    <h2 class="txt-main f-it">Exporter la collecte</h1>
+                    <p class="export-sub txt-main-light f-it f-15 f-bold">au format CSV</p>
+                </div>
+            </header>
+            <label for="element-format-id">Début</label>
+            <select id="element-format-id">
+                <option value="20210228">28 Février 2021</option>
+                <option value="20210227">27 Février 2021</option>
+                <option value="20210226">26 Février 2021</option>
+            </select>
+            <label for="element-format-id">Fin</label>
+            <select id="element-format-id">
+                <option value="20210228">28 Février 2021</option>
+                <option value="20210227">27 Février 2021</option>
+                <option value="20210226">26 Février 2021</option>
+            </select>
+            <div class="btn_flex-export">
+                <p class="export-btn txt-center" onclick="exportScrap({{ ID }})">Exporter</p>
+            </div>
+    </div>
+</div>

@@ -256,6 +256,7 @@ body {
 }
 
 #insc-window {
+  min-width: 360px;
   position: relative;
   padding: 15px 40px;
   border-radius: 15px;
@@ -346,6 +347,7 @@ body {
   min-height: 60px;
   position: fixed;
   width: 100%;
+  z-index: 99;
 }
 #navbar #header-right {
   padding: 0 25px;
@@ -587,6 +589,7 @@ body {
 }
 
 #right-window {
+  overflow-y: hidden;
   width: 100%;
 }
 
@@ -765,12 +768,17 @@ body {
 }
 
 #scrap-view-window {
+  height: 95%;
   position: relative;
   border-radius: 12px;
   padding: 16px;
   color: #495867;
   background-color: white;
   margin: 20px;
+}
+#scrap-view-window #scrap-view-window-inner {
+  overflow-y: scroll;
+  height: 90%;
 }
 #scrap-view-window #scrap-view-icn {
   margin-right: 12px;
@@ -802,7 +810,7 @@ body {
   display: none;
 }
 #scrap-view-window .view-datebox.selected .datebox-line-content {
-  display: block;
+  display: flex;
 }
 #scrap-view-window .view-datebox .datebox-delete-btn {
   display: none;
@@ -831,6 +839,9 @@ body {
 #scrap-view-window .view-datebox p {
   margin: 0;
 }
+#scrap-view-window .view-datebox p.element-value {
+  margin-bottom: 25px;
+}
 #scrap-view-window .view-datebox .view-datebox-date {
   font-weight: 700;
   font-size: 0.95rem;
@@ -846,6 +857,110 @@ body {
   background-position: cover;
   background-position-y: 2px;
   background-repeat: no-repeat;
+}
+
+.datebox-line-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.datebox-line-content .scrap-unit-box {
+  position: relative;
+  max-width: 32%;
+  background-color: #495867;
+  margin: 6px;
+  padding: 20px;
+  border-radius: 12px;
+  color: white;
+}
+.datebox-line-content .scrap-unit-box:hover {
+  background-color: #2a3b49;
+}
+.datebox-line-content .scrap-unit-box:hover .scrap-unit-delete-btn {
+  display: block;
+}
+.datebox-line-content .scrap-unit-box .scrap-unit-delete-btn {
+  display: none;
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 30px;
+  height: 30px;
+  background-image: url(../medias/trash.svg);
+  background-repeat: no-repeat;
+  object-fit: cover;
+  background-color: white;
+  border-radius: 15px;
+}
+.datebox-line-content .scrap-unit-box .scrap-unit-delete-btn:hover {
+  cursor: pointer;
+  background-image: url(../medias/trashhover.svg);
+  background-color: #fe5f55;
+}
+.datebox-line-content .scrap-unit-box .scrap-element {
+  margin: 10px 0px;
+}
+.datebox-line-content .scrap-unit-box .scrap-element .element-title {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+#export-icn {
+  width: 35px;
+  height: 35px;
+  padding-right: 25px;
+  margin-right: 16px;
+  background-image: url(../medias/export.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#insc-window header.title-export {
+  display: flex;
+}
+#insc-window header.title-export h2 {
+  margin: 0;
+}
+#insc-window header.title-export .export-sub {
+  margin: 0 0 25px 0;
+}
+
+#insc-window .btn_flex-export {
+  display: flex;
+  justify-content: center;
+}
+#insc-window .btn_flex-export .export-btn {
+  background-color: #495867;
+  display: block;
+  padding: 10px 8px;
+  max-width: 50%;
+  border-radius: 6px;
+  color: white;
+  margin-bottom: 0;
+}
+#insc-window .btn_flex-export .export-btn:hover {
+  cursor: pointer;
+  background-color: #fe5f55;
+}
+
+#insc-window select {
+  display: block;
+  width: 100%;
+  border: 2px solid #495867;
+  border-radius: 12px;
+  height: 42px;
+  padding: 0px 10px;
+  margin-bottom: 20px;
+  font-family: "Open Sans", sans-serif;
+  font-size: 0.75rem;
+  color: #495867;
+}
+
+#insc-window label {
+  color: #495867;
+  margin-bottom: 6px;
+  display: block;
 }
 
 /*# sourceMappingURL=style.css.map */
