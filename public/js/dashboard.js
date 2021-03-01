@@ -135,3 +135,12 @@ function newSelector(id){
         })
     })
 }
+function delSelector(id , scrapID){
+    
+    ajax('delSelector' , {'ID': id} , (xhr)=>{
+        ajax('selectorlist' , {'ID': scrapID} , (xhr)=>{
+            twigContainer = document.getElementById('element-box-container')
+            twigContainer.innerHTML = xhr.responseText
+        })
+    })
+}

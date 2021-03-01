@@ -132,22 +132,24 @@ $router->post('newSelector', function(){
     ));
     $selector->addToDB($_POST['ID']);
 });
+//del element
+$router->post('delSelector', function(){
+    checkSession();
+    $selector = new Selector(array());
+    $selector->delToDB($_POST['ID']);
+});
 
 //elements list
 $router->post('selectorlist', function(){
     checkSession();
-    $selector = new Selector(array(
-        'name' => 'Nouvel Element',
-        'format' => 'Texte',
-        'parent' => '',
-        'element' => '',
-    ));
+    $selector = new Selector(array());
     $data = $selector->getValues($_POST['ID']);
     $view = new View('parts/scrapselector.html.twig' , ['ID' => $_POST['ID'],
                                                         'formats' => array('Texte', 'Nombre' , 'Prix', 'Date' ,'Image'),
                                                         'selectors' => $data,
     ]);
 });
+
 $router->run();
 
 function checkSession(){

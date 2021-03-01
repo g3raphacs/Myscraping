@@ -78,4 +78,13 @@ class Selector extends Entity{
             return 'no scrap found';
         }
     }
+    public static function delToDB($id){
+        $base = new Connexion;
+
+        $base->qw('DELETE FROM selector WHERE ID = :ID',
+        array(
+            array('ID',$id,\PDO::PARAM_INT)
+            )
+        );
+    }
 }

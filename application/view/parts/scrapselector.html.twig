@@ -2,7 +2,7 @@
 
 {% for selector in selectors %}
     <div class="element-box bck-white">
-    <div class="element-delete-btn"></div>
+    <div class="element-delete-btn" onclick="delSelector({{ selector.ID }} , {{ ID }})"></div>
     <div class="element-title-box">
         <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
         <h2 class="element-title">{{ selector.name }}</h2>

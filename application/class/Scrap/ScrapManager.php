@@ -52,7 +52,7 @@ class ScrapManager {
 
         $base->qw('DELETE FROM scrap WHERE ID = :ID',
         array(
-            array('ID',$id,\PDO::PARAM_STR)
+            array('ID',$id,\PDO::PARAM_INT)
             )
         );
     }
