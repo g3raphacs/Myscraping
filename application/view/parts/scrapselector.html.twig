@@ -1,0 +1,27 @@
+{% set tab=["text" , "number" , "price" , "date" , "picture"] %}
+
+{% for selector in selectors %}
+    <div class="element-box bck-white">
+    <div class="element-delete-btn"></div>
+    <div class="element-title-box">
+        <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
+        <h2 class="element-title">{{ selector.name }}</h2>
+    </div>
+    <label for="element-name-id">Nom de l'élement</label>
+    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.name }}">
+    <label for="element-format-id">Format de l'element</label>
+    <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+    {% for format in formats %}
+        {% if format == selector.format %}
+            <option value="{{ format }}" selected="selected">{{ format }}</option>
+        {% else %}
+            <option value="{{ format }}">{{ format }}</option>
+        {% endif %}
+    {% endfor %}
+    </select>
+    <label for="element-name-id">Sélecteur Element Parent</label>
+    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.parent }}">
+    <label for="element-name-id">Sélecteur Element</label>
+    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.element }}">
+</div>
+{% endfor %}

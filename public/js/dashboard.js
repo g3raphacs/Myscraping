@@ -44,6 +44,10 @@ function opEdit(item , id){
     ajax('window-edit' ,{'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
+        ajax('selectorlist' , {'ID': id} , (xhr)=>{
+            twigContainer = document.getElementById('element-box-container')
+            twigContainer.innerHTML = xhr.responseText
+        })
     })
 }
 function opSave(item , id){
@@ -122,3 +126,12 @@ function ajax (route , data = null , callback = null){
     }
 }
 
+function newSelector(id){
+    
+    ajax('newSelector' , {'ID': id} , (xhr)=>{
+        ajax('selectorlist' , {'ID': id} , (xhr)=>{
+            twigContainer = document.getElementById('element-box-container')
+            twigContainer.innerHTML = xhr.responseText
+        })
+    })
+}

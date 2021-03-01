@@ -8,6 +8,7 @@ use App\Twig\View;
 use App\Session\SessionManager;
 use App\User\User;
 use App\Scrap\Scrap;
+use App\Selector\Selector;
 
 $router = new Router($_GET['url']);
 
@@ -119,7 +120,34 @@ $router->post('logo', function(){
     checkSession();
     $view = new View('parts/logo.html.twig');
 });
+//EDITION
+//new element
+$router->post('newSelector', function(){
+    checkSession();
+    $selector = new Selector(array(
+        'name' => 'Nouvel Element',
+        'format' => 'Texte',
+        'parent' => '',
+        'element' => '',
+    ));
+    $selector->addToDB($_POST['ID']);
+});
 
+//elements list
+$router->post('selectorlist', function(){
+    checkSession();
+    $selector = new Selector(array(
+        'name' => 'Nouvel Element',
+        'format' => 'Texte',
+        'parent' => '',
+        'element' => '',
+    ));
+    $data = $selector->getValues($_POST['ID']);
+    $view = new View('parts/scrapselector.html.twig' , ['ID' => $_POST['ID'],
+                                                        'formats' => array('Texte', 'Nombre' , 'Prix', 'Date' ,'Image'),
+                                                        'selectors' => $data,
+    ]);
+});
 $router->run();
 
 function checkSession(){

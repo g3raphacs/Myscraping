@@ -623,6 +623,7 @@ body {
   padding: 6px 3px;
   max-width: 60px;
   margin: 0 6px;
+  text-transform: uppercase;
 }
 .confirm-btn.yes-button {
   background-color: #fe5f55;
@@ -905,6 +906,7 @@ body {
   object-fit: cover;
   background-color: white;
   border-radius: 15px;
+  text-transform: uppercase;
 }
 .datebox-line-content .scrap-unit-box .scrap-unit-delete-btn:hover {
   cursor: pointer;
@@ -951,6 +953,7 @@ body {
   max-width: 50%;
   border-radius: 6px;
   color: white;
+  text-transform: uppercase;
   margin-bottom: 0;
 }
 #insc-window .btn_flex-export .export-btn:hover {
@@ -998,6 +1001,11 @@ body {
   cursor: pointer;
   background-color: #fe5f55;
   color: white;
+}
+
+.scroller {
+  scrollbar-color: #495867 #f0f0f0;
+  scrollbar-width: thin;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -25,12 +25,25 @@ class ScrapManager {
             }
     }
     public static function newScrap($scraplist){
+    
+        
         $base = new Connexion;
+        $req = $base->q(
+            "SELECT
+                        ID
+                        FROM user
+                        WHERE scraplist = :scraplist",
+            array(
+                array('scraplist',$scraplist,\PDO::PARAM_STR)
+                )
+        );
+        $userID =  $req[0]->ID;
 
-        $base->qw('INSERT INTO scrap(`scraplist_ID`, `name`, `url`)
-                  VALUES (:scraplist_ID, "Nouvelle Collecte", "https://www.google.fr")',
+        $base->qw('INSERT INTO scrap(`scraplist_ID`, `name`, `url` ,`frequence`, `type`, `user_ID`)
+                  VALUES (:scraplist_ID, "Nouvelle Collecte", "https://www.google.fr" ,"jour", "jeu" ,:user)',
         array(
-            array('scraplist_ID',$scraplist,\PDO::PARAM_STR)
+            array('scraplist_ID',$scraplist,\PDO::PARAM_STR),
+            array('user',$userID,\PDO::PARAM_INT)
             )
         );
     }

@@ -4,7 +4,7 @@
                     <div id="params">
                         <label for="colparam-name">Nom de la collecte</label>
                         <input id="colparam-name" type="text" placeholder="Entrez un nom">
-                        <label for="colparam-url">Nom de la collecte</label>
+                        <label for="colparam-url">URL</label>
                         <input id="colparam-url" type="text" placeholder="Entrez l'URL à collecter">
                         <label for="colparam-frequence">Fréquence de la collecte</label>
                         <select id="colparam-frequence" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
@@ -21,78 +21,15 @@
                             <p class="edit-validate-btn txt-center" onclick="validateEdit({{ ID }})">Valider les changements</p>
                         </div>
                     </div>
-                    <div id="new-element-btn">
+                    <div id="new-element-btn" onclick="newSelector({{ ID }})">
                         <div id="new-element-icon"></div>
                         <p>Ajoutez un element à cibler</p>
                     </div>
                 </div>
-                <div class="right-col">
-                    <div class="element-box bck-white">
-                        <div class="element-delete-btn"></div>
-                        <div class="element-title-box">
-                            <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
-                            <h2 class="element-title">Element 1</h2>
-                        </div>
-                        <label for="element-name-id">Nom de l'élement</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-format-id">Format de l'element</label>
-                        <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                            <option value="text">Texte</option>
-                            <option value="number">Nombre</option>
-                            <option value="price">Prix</option>
-                            <option value="date">Date</option>
-                            <option value="picture">Image</option>
-                        </select>
-                        <label for="element-name-id">Sélecteur Element Parent</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-name-id">Sélecteur Element</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                    </div>
-                    <div class="element-box bck-white">
-                        <div class="element-delete-btn"></div>
-                        <div class="element-title-box">
-                            <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
-                            <h2 class="element-title">Element 1</h2>
-                        </div>
-                        <label for="element-name-id">Nom de l'élement</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-format-id">Format de l'element</label>
-                        <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                            <option value="text">Texte</option>
-                            <option value="number">Nombre</option>
-                            <option value="price">Prix</option>
-                            <option value="date">Date</option>
-                            <option value="picture">Image</option>
-                        </select>
-                        <label for="element-name-id">Sélecteur Element Parent</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-name-id">Sélecteur Element</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                    </div>
-                    <div class="element-box bck-white">
-                        <div class="element-delete-btn"></div>
-                        <div class="element-title-box">
-                            <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
-                            <h2 class="element-title">Element 1</h2>
-                        </div>
-                        <label for="element-name-id">Nom de l'élement</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-format-id">Format de l'element</label>
-                        <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
-                            <option value="text">Texte</option>
-                            <option value="number">Nombre</option>
-                            <option value="price">Prix</option>
-                            <option value="date">Date</option>
-                            <option value="picture">Image</option>
-                        </select>
-                        <label for="element-name-id">Sélecteur Element Parent</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                        <label for="element-name-id">Sélecteur Element</label>
-                        <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
-                    </div>
+                <div id="element-box-container" class="right-col scroller">
+                    {% block scrapselector %}
+                        {% include "/parts/scrapselector.html.twig" %}
+                    {% endblock %}
                 </div>
             </div>
-            {# <div id="validation-btn-box" class="bck-main-dark">
-                <p id="validation-btn">APPLIQUER</p>
-            </div> #}
         </div>

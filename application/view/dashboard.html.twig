@@ -15,7 +15,7 @@
             <div class="plus-icn"></div>
             <p class="mp0 f-sbold">Nouvelle collecte</p>
         </div>
-        <div id="scrapitems-container">
+        <div id="scrapitems-container" class="scroller">
         {% block scraplist %}
             {% include "/parts/scraplist.html.twig" %}
         {% endblock %}
@@ -23,7 +23,9 @@
     </section>
         
     <section id="right-window">
-        
+        <div id="right-logo-container">
+            <img id="logo-right" src="public/medias/logowhite.svg" width="450px" height="120px" alt="scrapin logo">
+        </div>
     </section>
 </div>
     
