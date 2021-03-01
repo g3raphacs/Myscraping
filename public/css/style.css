@@ -981,4 +981,23 @@ body {
   display: block;
 }
 
+.edit-validate-btn {
+  text-align: center;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  margin: auto;
+  background-color: #ffffff;
+  max-width: 45px;
+  padding: 10px;
+  border-radius: 10px;
+  margin-top: 22px;
+  margin-bottom: 22px;
+  min-width: 200px;
+}
+.edit-validate-btn:hover {
+  cursor: pointer;
+  background-color: #fe5f55;
+  color: white;
+}
+
 /*# sourceMappingURL=style.css.map */
