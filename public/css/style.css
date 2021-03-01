@@ -663,12 +663,16 @@ body {
   width: 100%;
   border: 2px solid white;
   border-radius: 12px;
-  height: 42px;
+  min-height: 20px;
+  max-height: 100px;
   padding: 0px 10px;
   margin-bottom: 20px;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
   color: white;
+}
+#right-split-container #params select option {
+  padding: 16px 0px;
 }
 #right-split-container .element-box {
   position: relative;
@@ -681,12 +685,16 @@ body {
   width: 100%;
   border: 2px solid #495867;
   border-radius: 12px;
-  height: 42px;
+  min-height: 20px;
+  max-height: 100px;
   padding: 0px 10px;
   margin-bottom: 20px;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
   color: #495867;
+}
+#right-split-container .element-box option {
+  padding: 16px 0px;
 }
 #right-split-container label {
   margin-bottom: 6px;
@@ -949,12 +957,16 @@ body {
   width: 100%;
   border: 2px solid #495867;
   border-radius: 12px;
-  height: 42px;
+  min-height: 20px;
+  max-height: 100px;
   padding: 0px 10px;
   margin-bottom: 20px;
   font-family: "Open Sans", sans-serif;
   font-size: 0.75rem;
   color: #495867;
+}
+#insc-window select option {
+  padding: 16px 0px;
 }
 
 #insc-window label {

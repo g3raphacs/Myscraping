@@ -7,13 +7,13 @@
                         <label for="colparam-url">Nom de la collecte</label>
                         <input id="colparam-url" type="text" placeholder="Entrez l'URL à collecter">
                         <label for="colparam-frequence">Fréquence de la collecte</label>
-                        <select id="colparam-frequence">
+                        <select id="colparam-frequence" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                             <option value="jour">Tous les jours</option>
                             <option value="semaine">Toutes les semaines</option>
                             <option value="mois">Tous les mois</option>
                         </select>
                         <label for="colparam-donnees">Type de données</label>
-                        <select id="colparam-donnees">
+                        <select id="colparam-donnees" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                             <option value="jour">Jeu de données</option>
                             <option value="semaine">Donnée unique</option>
                         </select>
@@ -33,7 +33,7 @@
                         <label for="element-name-id">Nom de l'élement</label>
                         <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement">
                         <label for="element-format-id">Format de l'element</label>
-                        <select id="element-format-id">
+                        <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
                             <option value="text">Texte</option>
                             <option value="number">Nombre</option>
                             <option value="price">Prix</option>
