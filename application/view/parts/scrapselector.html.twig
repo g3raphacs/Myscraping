@@ -1,7 +1,7 @@
 {% set tab=["text" , "number" , "price" , "date" , "picture"] %}
 
 {% for selector in selectors %}
-    <div class="element-box bck-white">
+<form class="element-box bck-white" data-index="{{ selector.ID }}">
     <div class="element-delete-btn" onclick="delSelector({{ selector.ID }} , {{ ID }})"></div>
     <div class="element-title-box">
         <img class="element-icn" src="public/medias/element.svg" width="35px" height="35px" >
@@ -23,5 +23,5 @@
     <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.parent }}">
     <label for="element-name-id">Sélecteur Element</label>
     <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.element }}">
-</div>
+</form>
 {% endfor %}

@@ -125,6 +125,32 @@ function ajax (route , data = null , callback = null){
         }
     }
 }
+function ajaxform (route , form = null , data = null , callback = null){
+    let formdata
+    if (form){
+        formdata = new FormData(form);
+    }else{
+        formdata = new FormData()
+    }
+    if(data){
+        for (const [key, value] of Object.entries(data)) {
+            formdata.append(key, value);
+          }
+    }
+    const xhr = new XMLHttpRequest();
+    const phproute = route;
+
+    xhr.open('POST', phproute, true);
+    xhr.send(formdata);
+    xhr.onreadystatechange = () => {
+        if (xhr.readyState == 4 && xhr.status == 200) {
+            if(callback !== null){
+                callback(xhr)
+            }
+        }
+    }
+}
+
 
 function newSelector(id){
     
@@ -143,4 +169,15 @@ function delSelector(id , scrapID){
             twigContainer.innerHTML = xhr.responseText
         })
     })
+}
+
+function validateEdit (id){
+    const params = document.getElementById('params')
+    ajaxform('validparams' , params, {'ID': id}, (xhr)=>{
+        selectors = document.getElementsByClassName('element-box');
+        for (let i = 0; i < selectors.length; i++) {
+            console.log
+        }
+    })
+    
 }

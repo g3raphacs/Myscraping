@@ -78,6 +78,11 @@ $router->post('delScrap', function(){
     checkSession();
     ScrapManager::delete($_POST['ID']);
 });
+//update params
+$router->post('validparams', function(){
+    checkSession();
+    ScrapManager::updateParams($_POST['ID']);
+});
 //twig - Options
 $router->post('twigOptions', function(){
     checkSession();
@@ -98,7 +103,9 @@ $router->post('window-del', function(){
 //Window - edit
 $router->post('window-edit', function(){
     checkSession();
-    $view = new View('parts/editwindow.html.twig' , ['ID' => $_POST['ID']]);
+    $params = (array) ScrapManager::findParams($_POST['ID']);
+    $view = new View('parts/editwindow.html.twig' , ['ID' => $_POST['ID'],
+                                                    'params' => $params ]);
 });
 //Window - save
 $router->post('window-save', function(){
