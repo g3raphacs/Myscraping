@@ -985,21 +985,25 @@ body {
 }
 
 .edit-validate-btn {
+  position: absolute;
+  bottom: 15px;
+  right: 30px;
+  z-index: 99;
   text-align: center;
   font-family: "Roboto", sans-serif;
   font-weight: 700;
   margin: auto;
-  background-color: #ffffff;
+  background-color: #fe5f55;
   max-width: 45px;
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
-  margin-top: 22px;
-  margin-bottom: 22px;
   min-width: 200px;
+  box-shadow: 5px 5px 10px #2a3b49;
+  color: white;
 }
 .edit-validate-btn:hover {
   cursor: pointer;
-  background-color: #fe5f55;
+  background-color: #1fc21f;
   color: white;
 }
 
