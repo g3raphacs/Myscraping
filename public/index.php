@@ -9,6 +9,7 @@ use App\Session\SessionManager;
 use App\User\User;
 use App\Scrap\Scrap;
 use App\Selector\Selector;
+use App\Selector\SelectorManager;
 
 $router = new Router($_GET['url']);
 
@@ -82,6 +83,11 @@ $router->post('delScrap', function(){
 $router->post('validparams', function(){
     checkSession();
     ScrapManager::updateParams($_POST['ID']);
+});
+//update selector
+$router->post('updateSelector', function(){
+    checkSession();
+    SelectorManager::updateSelector($_POST['ID']);
 });
 //twig - Options
 $router->post('twigOptions', function(){

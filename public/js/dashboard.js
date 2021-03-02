@@ -10,7 +10,7 @@ function opSelect(item , id){
         }
         scrapitem.classList.add('selected')
         
-        ajax('twigOptions' ,{'ID': id} , (xhr)=>{
+        ajax('twigOptions' ,null, {'ID': id} , (xhr)=>{
             twigContainer.innerHTML = xhr.responseText
         })
     }
@@ -18,8 +18,8 @@ function opSelect(item , id){
 
 function newScrap(){
     
-    ajax('newScrap' , null , (xhr)=>{
-        ajax('scraplist' , null , (xhr)=>{
+    ajax('newScrap' ,null, null , (xhr)=>{
+        ajax('scraplist' ,null, null , (xhr)=>{
             twigContainer = document.getElementById('scrapitems-container')
             twigContainer.innerHTML = xhr.responseText
         })
@@ -29,7 +29,7 @@ function newScrap(){
 function opCollect(item , id){
     selectOption(item)
     
-    ajax('window-collect' ,{'ID': id} , (xhr)=>{
+    ajax('window-collect' , null, {'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
     })
@@ -41,10 +41,10 @@ function opSee(item , id){
 function opEdit(item , id){
     selectOption(item)
     
-    ajax('window-edit' ,{'ID': id} , (xhr)=>{
+    ajax('window-edit' , null ,{'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
-        ajax('selectorlist' , {'ID': id} , (xhr)=>{
+        ajax('selectorlist' , null, {'ID': id} , (xhr)=>{
             twigContainer = document.getElementById('element-box-container')
             twigContainer.innerHTML = xhr.responseText
         })
@@ -53,7 +53,7 @@ function opEdit(item , id){
 function opSave(item , id){
     selectOption(item)
 
-    ajax('window-save' ,{'ID': id} , (xhr)=>{
+    ajax('window-save' , null ,{'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
     })
@@ -61,7 +61,7 @@ function opSave(item , id){
 function opDelete(item , id){
     selectOption(item)
 
-    ajax('window-del' ,{'ID': id} , (xhr)=>{
+    ajax('window-del' , null, {'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
     })
@@ -86,17 +86,17 @@ function see(id){
     unselectOptions()
     const optionBtn = document.getElementById('option-see');
     optionBtn.classList.add('selected')
-    ajax('seeScrap' ,{'ID': id} , (xhr)=>{
+    ajax('seeScrap' ,null,{'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
     })
 }
 function delScrap(id){
-    ajax('delScrap' ,{'ID': id} , (xhr)=>{
-        ajax('scraplist' , null , (xhr)=>{
+    ajax('delScrap' , null,{'ID': id} , (xhr)=>{
+        ajax('scraplist' , null, null , (xhr)=>{
             twigContainer = document.getElementById('scrapitems-container')
             twigContainer.innerHTML = xhr.responseText
-            ajax('logo' ,null , (xhr)=>{
+            ajax('logo' , null, null , (xhr)=>{
                 twigContainer = document.getElementById('right-window')
                 twigContainer.innerHTML = xhr.responseText
             })
@@ -104,28 +104,8 @@ function delScrap(id){
     })
 }
 
-function ajax (route , data = null , callback = null){
-    const formdata = new FormData();
-    if(data){
-        for (const [key, value] of Object.entries(data)) {
-            formdata.append(key, value);
-          }
-    }
-    
-    const xhr = new XMLHttpRequest();
-    const phproute = route;
 
-    xhr.open('POST', phproute, true);
-    xhr.send(formdata);
-    xhr.onreadystatechange = () => {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-            if(callback !== null){
-                callback(xhr)
-            }
-        }
-    }
-}
-function ajaxform (route , form = null , data = null , callback = null){
+function ajax (route , form = null , data = null , callback = null){
     let formdata
     if (form){
         formdata = new FormData(form);
@@ -154,8 +134,8 @@ function ajaxform (route , form = null , data = null , callback = null){
 
 function newSelector(id){
     
-    ajax('newSelector' , {'ID': id} , (xhr)=>{
-        ajax('selectorlist' , {'ID': id} , (xhr)=>{
+    ajax('newSelector' ,null, {'ID': id} , (xhr)=>{
+        ajax('selectorlist' ,null, {'ID': id} , (xhr)=>{
             twigContainer = document.getElementById('element-box-container')
             twigContainer.innerHTML = xhr.responseText
         })
@@ -163,8 +143,8 @@ function newSelector(id){
 }
 function delSelector(id , scrapID){
     
-    ajax('delSelector' , {'ID': id} , (xhr)=>{
-        ajax('selectorlist' , {'ID': scrapID} , (xhr)=>{
+    ajax('delSelector' ,null, {'ID': id} , (xhr)=>{
+        ajax('selectorlist' ,null, {'ID': scrapID} , (xhr)=>{
             twigContainer = document.getElementById('element-box-container')
             twigContainer.innerHTML = xhr.responseText
         })
@@ -173,11 +153,23 @@ function delSelector(id , scrapID){
 
 function validateEdit (id){
     const params = document.getElementById('params')
-    ajaxform('validparams' , params, {'ID': id}, (xhr)=>{
+    ajax('validparams' , params, {'ID': id}, (xhr)=>{
+        ajax('scraplist' , null, null , (xhr)=>{
+            twigContainer = document.getElementById('scrapitems-container')
+            twigContainer.innerHTML = xhr.responseText
+        })
         selectors = document.getElementsByClassName('element-box');
         for (let i = 0; i < selectors.length; i++) {
-            console.log
+            let selector = selectors[i];
+            let selectorid = selector.getAttribute("data-index")
+            ajax('updateSelector' ,selector, {'ID': selectorid} , (xhr)=>{
+                if(i === selectors[i]-1){
+                    ajax('selectorlist' ,null, {'ID': id} , (xhr)=>{
+                        twigContainer = document.getElementById('element-box-container')
+                        twigContainer.innerHTML = xhr.responseText
+                    })
+                }
+            })
         }
     })
-    
 }

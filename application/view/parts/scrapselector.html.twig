@@ -8,9 +8,9 @@
         <h2 class="element-title">{{ selector.name }}</h2>
     </div>
     <label for="element-name-id">Nom de l'élement</label>
-    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.name }}">
+    <input class="element-name-input" id="element-name-id" name="name" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.name }}">
     <label for="element-format-id">Format de l'element</label>
-    <select id="element-format-id" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
+    <select id="element-format-id" name="format" onfocus='this.size=3;' onblur='this.size=1;' onchange='this.size=1; this.blur();'>
     {% for format in formats %}
         {% if format == selector.format %}
             <option value="{{ format }}" selected="selected">{{ format }}</option>
@@ -19,9 +19,9 @@
         {% endif %}
     {% endfor %}
     </select>
-    <label for="element-name-id">Sélecteur Element Parent</label>
-    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.parent }}">
-    <label for="element-name-id">Sélecteur Element</label>
-    <input class="element-name-input" id="element-name-id" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.element }}">
+    <label for="element-parent-id">Sélecteur Element Parent</label>
+    <input class="element-parent-input" id="element-parent-id" name="parent" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.parent }}">
+    <label for="element-element-id">Sélecteur Element</label>
+    <input class="element-element-input" id="element-element-id" name="element" type="text" placeholder="Entrez le nom de l'élement" value="{{ selector.element }}">
 </form>
 {% endfor %}
