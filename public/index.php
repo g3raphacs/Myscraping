@@ -7,9 +7,9 @@ use App\Scrap\ScrapManager;
 use App\Twig\View;
 use App\Session\SessionManager;
 use App\User\User;
-use App\Scrap\Scrap;
 use App\Selector\Selector;
 use App\Selector\SelectorManager;
+use App\Scrap\ScrapExec;
 
 $router = new Router($_GET['url']);
 
@@ -89,6 +89,18 @@ $router->post('updateSelector', function(){
     checkSession();
     SelectorManager::updateSelector($_POST['ID']);
 });
+//exec scrap
+$router->post('scrapExec', function(){
+    checkSession();
+    $scrapEx = new ScrapExec($_POST['ID']);
+});
+
+//exec scrap
+// $router->post('newScrapDate', function(){
+//     checkSession();
+//     ScrapExec::newScrapDate($_POST['ID']);
+// });
+
 //twig - Options
 $router->post('twigOptions', function(){
     checkSession();

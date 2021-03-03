@@ -173,3 +173,9 @@ function validateEdit (id){
         }
     })
 }
+
+function launchScrap(id){
+    ajax('scrapExec' ,null, {'ID': id} , (xhr)=>{
+        const dateID = xhr.responseText
+    })
+}
