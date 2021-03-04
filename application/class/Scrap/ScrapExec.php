@@ -14,6 +14,7 @@ class ScrapExec {
     private $selectorsCount;
     private $params;
     private $basedata = [];
+    private $singles = [];
 
     function __construct($id) {
         $this->scrapID = $id;
@@ -33,25 +34,41 @@ class ScrapExec {
         $this->getSelectors($this->scrapID);
         $this->getParams($this->scrapID);
         $this->getData();
-        $this->createSingles();
+        if ($this->basedata){
+            $this->createSingles();
+        }else{
+            echo "no data scraped - -//- - ";
+        }
+        var_dump($this->singles);
+        if($this->singles){
+            $this->createElements();
+        }else{
+            "no scrap single found - -//- - ";
+        }
     }
 
     private function getData(){
         $url = $this->params->url;
         for ($i =0 ; $i<$this->selectorsCount ; $i++){
+            echo $this->selectors[$i]->element."----->";
             $css_selector = $this->selectors[$i]->element;
             // $thing_to_scrape = array("href" , "src" , "class" , "_text");
             $thing_to_scrape = array("_text");
             $client = new Client();
             $crawler = $client->request('GET', $url);
             $output = $crawler->filter($css_selector)->extract($thing_to_scrape);
-            $this->basedata[] = $output;
+            if($output){
+                $this->basedata[] = $output;
+            }else{
+                echo "no matching element - -//- - ";
+            }
+            
         }
     }
 
     private function createSingles(){
+        $base = new Connexion;
         for($i = 0 ; $i<count($this->basedata[0]) ; $i++){
-            $base = new Connexion;
             $base->qw('INSERT INTO scrapsingle(`scrapdate_id`)
                   VALUES (:scrapdate_id)',
             array(
@@ -61,12 +78,26 @@ class ScrapExec {
             $req = $base->q(
                 "SELECT max(ID) as ID FROM scrapsingle", null
             );
-            $this->createElements($req[0]->ID);
+            $this->singles[] = (int)($req[0]->ID);
         }
     }
 
-    private function createElements($id){
-        echo "create elements for".$id;
+    private function createElements(){
+        
+        $base = new Connexion;
+        for($i = 0 ; $i<$this->selectorsCount ; $i++){
+            for($j = 0 ; $j<count($this->singles) ; $j++){
+                $base->qw('INSERT INTO scrapelement(`name`, `format`, `data` ,`scrapSingle_ID`)
+                  VALUES (:nm, :ft, :dat , :scpid)',
+                array(
+                    array('nm', $this->selectors[$i]->name,\PDO::PARAM_STR),
+                    array('ft', $this->selectors[$i]->format,\PDO::PARAM_STR),
+                    array('dat', $this->basedata[$i][$j],\PDO::PARAM_STR),
+                    array('scpid', $this->singles[$j],\PDO::PARAM_INT)
+                    )
+                );
+            }
+        }
     }
 
     private function getParams($id){
