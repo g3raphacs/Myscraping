@@ -139,9 +139,4 @@ class ScrapExec {
                 echo 'no selector found';
             }
     }
-
-    // public function launchScrap($id){
-    //     $selectors = getSelectors($id);
-    //     getData();
-    // }
 }

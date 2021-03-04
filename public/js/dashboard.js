@@ -89,6 +89,10 @@ function see(id){
     ajax('seeScrap' ,null,{'ID': id} , (xhr)=>{
         twigContainer = document.getElementById('right-window')
         twigContainer.innerHTML = xhr.responseText
+        ajax('seeScrappoints' ,null,{'ID': id} , (xhr)=>{
+            twigContainer = document.getElementById('scrap-view-window-inner')
+            twigContainer.innerHTML = xhr.responseText
+        })
     })
 }
 function delScrap(id){
@@ -178,4 +182,20 @@ function launchScrap(id){
     ajax('scrapExec' ,null, {'ID': id} , (xhr)=>{
         const dateID = xhr.responseText
     })
+}
+
+function clickDateLine(dateLine , id){
+
+    if(!dateLine.classList.contains('selected')){
+
+        const lines = document.getElementsByClassName('view-datebox')
+        for (let i = 0; i < lines.length ; i++) {
+            lines[i].classList.remove('selected')
+        }
+        dateLine.classList.add('selected')
+        ajax('loadsingles' ,null, {'ID': id} , (xhr)=>{
+            twigContainer = document.querySelector(".view-datebox.selected > .datebox-line-content")
+            twigContainer.innerHTML = xhr.responseText
+        })
+    }
 }

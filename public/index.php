@@ -140,6 +140,20 @@ $router->post('seeScrap', function(){
     checkSession();
     $view = new View('parts/viewwindow.html.twig' , ['ID' => $_POST['ID']]);
 });
+//Window - seeScrapPoints
+$router->post('seeScrappoints', function(){
+    checkSession();
+    $dates = (array) ScrapManager::getDates($_POST['ID']);
+    $view = new View('parts/scrappoint.html.twig' , ['ID' => $_POST['ID'],
+                                                    'Dates' => $dates]);
+});
+//Window - loadSingles
+$router->post('loadsingles', function(){
+    checkSession();
+    $singles = (array) ScrapManager::getSingles($_POST['ID']);
+    $view = new View('parts/scrapsingle.html.twig' , ['ID' => $_POST['ID'],
+                                                    'singles' => $singles]);
+});
 //Window - logo
 $router->post('logo', function(){
     checkSession();

@@ -24,6 +24,44 @@ class ScrapManager {
                 return 'no scrap found';
             }
     }
+    public static function getDates($ID){
+        $base = new Connexion;
+
+        $req = $base->q(
+            "SELECT
+                        *
+                        FROM scrapdate as s
+                        WHERE s.scrapID = :id
+                        ORDER BY s.ID DESC",
+            array(
+                array('id',$ID,\PDO::PARAM_INT)
+                )
+        );
+        if(isset($req)){
+            return $req;
+        }else{
+            return 'no scrap found';
+        }
+    }
+    public static function getSingles($ID){
+        $base = new Connexion;
+
+        $req = $base->q(
+            "SELECT
+                        *
+                        FROM scrapsingle as s
+                        WHERE s.scrapdate_id = :id",
+            array(
+                array('id',$ID,\PDO::PARAM_INT)
+                )
+        );
+        if(isset($req)){
+            return $req;
+        }else{
+            return 'no scrap single found';
+        }
+    }
+
     public static function findParams($ID){
         $base = new Connexion;
 
@@ -44,7 +82,6 @@ class ScrapManager {
     }
     public static function newScrap($scraplist){
     
-        
         $base = new Connexion;
         $req = $base->q(
             "SELECT
