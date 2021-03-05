@@ -1,12 +1,12 @@
 <div id="scrap-view-window">
-            <div id="scrap-view-title-box">
-                <img id="scrap-view-icn" src="public/medias/view.svg" width="35px" height="35px" >
-                <div class="scrap-view-title-line">
-                    <h2 id="scrap-view-title">Visualiser "Nom de la collecte"</h2>
-                    <p id="scrap-view-url">https://www.nomdusite.fr</p>
-                </div>
-            </div>
-            <div id="scrap-view-window-inner" class="scroller">
-                {# Ajax content here #}
-            </div>
+    <div id="scrap-view-title-box">
+        <img id="scrap-view-icn" src="public/medias/view.svg" width="35px" height="35px" >
+        <div class="scrap-view-title-line">
+            <h2 id="scrap-view-title">Visualiser "{{ name }}"</h2>
+            <p id="scrap-view-url"><a href="{{ url }}" target="blank" >{{ url }}</a></p>
         </div>
+    </div>
+    <div id="scrap-view-window-inner" class="scroller">
+        {# Ajax content here #}
+    </div>
+</div>

@@ -145,7 +145,8 @@ $router->post('window-collect', function(){
 //Window - see
 $router->post('seeScrap', function(){
     checkSession();
-    $view = new View('parts/viewwindow.html.twig' , ['ID' => $_POST['ID']]);
+    $data = (array) ScrapManager::getScrapProps($_POST['ID']);
+    $view = new View('parts/viewwindow.html.twig' , ['ID' => $_POST['ID'] , 'name' => $data[0]->name , 'url' => $data[0]->url]);
 });
 //Window - seeScrapPoints
 $router->post('seeScrappoints', function(){

@@ -149,4 +149,20 @@ class ScrapManager {
             echo 'no scrap found';
         }
     }
+
+    public static function getScrapProps($id){
+        $base = new Connexion;
+
+        $req = $base->q(
+            "SELECT `name` , `url` FROM scrap WHERE ID = :id",
+            array(
+                array('id',$id,\PDO::PARAM_INT)
+            )
+            );
+            if(isset($req)){
+                return $req;
+            }else{
+                return 'no scrap props found';
+            }
+    }
 }
