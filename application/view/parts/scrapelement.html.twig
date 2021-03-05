@@ -1,4 +1,6 @@
-<div class="scrap-element">
-    <p class="element-title">Element 1</p>
-    <p class="element-value">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi libero eligendi quod molestias. Est, qui debitis ipsam facere voluptates obcaecati sint soluta reiciendis nisi, nostrum mollitia provident veritatis magni eius!</p>
-</div>
+{% for element in Elements %}   
+    <div class="scrap-element">
+        <p class="element-title">{{ element.name }}</p>
+        <p class="element-value">{{ element.data }}</p>
+    </div>
+{% endfor %}

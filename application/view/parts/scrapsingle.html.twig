@@ -1,8 +1,8 @@
 {% for single in singles %}
-    <div class="scrap-unit-box">
-        <div class="scrap-unit-delete-btn"></div>
-        {% block scrappoints %}
-                    {% include "/parts/scrapelement.html.twig" %}
-        {% endblock %}
+    <div class="scrap-unit-box" data-id="{{ single.ID }}">
+        <div class="scrap-unit-delete-btn" onclick="delSingle(this , {{ single.ID }}" data-id="{{ single.ID }}")></div>
+        <div class="scrap-single">
+            {# load elements here  #}
+        </div>
     </div>
 {% endfor %}

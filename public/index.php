@@ -94,12 +94,19 @@ $router->post('scrapExec', function(){
     checkSession();
     $scrapEx = new ScrapExec($_POST['ID']);
 });
-
-//exec scrap
-// $router->post('newScrapDate', function(){
-//     checkSession();
-//     ScrapExec::newScrapDate($_POST['ID']);
-// });
+//load elements
+$router->post('getElements', function(){
+    checkSession();
+    ScrapManager::loadElements($_POST['ID']);
+});
+//show elements
+$router->post('loadElements', function(){
+    checkSession();
+    $elements = json_decode($_POST['Elements']);
+    $view = new View('parts/scrapelement.html.twig' , ['ID' => $_POST['ID'],
+                                                        'Elements' => $elements
+    ]);
+});
 
 //twig - Options
 $router->post('twigOptions', function(){

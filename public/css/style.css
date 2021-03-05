@@ -880,6 +880,7 @@ body {
   flex-wrap: wrap;
 }
 .datebox-line-content .scrap-unit-box {
+  width: 24%;
   position: relative;
   max-width: 32%;
   background-color: #495867;

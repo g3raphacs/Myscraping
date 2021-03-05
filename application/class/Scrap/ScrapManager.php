@@ -130,4 +130,23 @@ class ScrapManager {
             )
         );
     }
+    public static function loadElements($id){
+        $base = new Connexion;
+
+        $req = $base->q(
+            "SELECT
+                *
+                FROM scrapelement
+                WHERE scrapSingle_ID = :id
+                ORDER by ID desc",
+            array(
+                array('id',$id,\PDO::PARAM_INT)
+                )
+        );
+        if(isset($req)){
+            echo json_encode($req);
+        }else{
+            echo 'no scrap found';
+        }
+    }
 }

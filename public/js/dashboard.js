@@ -196,6 +196,19 @@ function clickDateLine(dateLine , id){
         ajax('loadsingles' ,null, {'ID': id} , (xhr)=>{
             twigContainer = document.querySelector(".view-datebox.selected > .datebox-line-content")
             twigContainer.innerHTML = xhr.responseText
+            twigContainer = dateLine.children.item(2);
+            const elements = dateLine.children.item(2).children;
+            for(let i = 0 ; i<elements.length ; i++){
+                let singleID = elements[i].getAttribute("data-id")
+                ajax('getElements' ,null, {'ID': singleID} , (xhr)=>{
+                    data=xhr.response
+                    ajax('loadElements' ,null, {'ID': singleID , 'Elements' : data} , (xhr)=>{
+                        console.log(elements[i].children)
+                        twigContainer = elements[i].children.item(1)
+                        twigContainer.innerHTML = xhr.responseText
+                    })
+                })
+            }
         })
     }
 }
