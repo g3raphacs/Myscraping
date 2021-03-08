@@ -212,3 +212,9 @@ function clickDateLine(dateLine , id){
         })
     }
 }
+
+function delSingle(obj , id){
+    ajax('deletesingle' ,null, {'ID': id} , (xhr)=>{
+        obj.parentNode.parentNode.removeChild(obj);
+    })
+}

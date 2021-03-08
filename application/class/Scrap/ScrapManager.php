@@ -165,4 +165,14 @@ class ScrapManager {
                 return 'no scrap props found';
             }
     }
+
+    public static function delSingle($id){
+        $base = new Connexion;
+
+        $base->qw('DELETE FROM scrapsingle WHERE ID = :ID',
+        array(
+            array('ID',$id,\PDO::PARAM_INT)
+            )
+        );
+    }
 }

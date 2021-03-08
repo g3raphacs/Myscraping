@@ -74,10 +74,15 @@ $router->post('newScrap', function(){
     checkSession();
     ScrapManager::newScrap($_SESSION['scraplist']);
 });
-//new scrap
+//del scrap
 $router->post('delScrap', function(){
     checkSession();
     ScrapManager::delete($_POST['ID']);
+});
+//del single
+$router->post('deletesingle', function(){
+    checkSession();
+    ScrapManager::delSingle($_POST['ID']);
 });
 //update params
 $router->post('validparams', function(){
